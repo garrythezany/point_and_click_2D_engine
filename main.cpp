@@ -7,7 +7,7 @@ using namespace std;
 sf::RenderWindow window;
 
 // Multiplier for 320x200px base resolution
-unsigned int resMultiplier = 5;
+unsigned int resMultiplier = 6;
 float resMultiplierF = resMultiplier;
 
 // Classes
@@ -213,9 +213,9 @@ public:
 
     void scrollView(float playerPositionX){
         if (isScrollable){
-            if (playerPositionX > viewMask.width + viewMask.left - 100 * resMultiplier && roomTexture.getSize().x * resMultiplier >= viewMask.width + viewMask.left){
+            if (playerPositionX > viewMask.width + viewMask.left - 100 * resMultiplier && roomTexture.getSize().x * resMultiplier > viewMask.width + viewMask.left){
                 viewMask.left += 1 * resMultiplier;
-            } else if (playerPositionX < viewMask.left + 100 * resMultiplier && viewMask.left >= 0){
+            } else if (playerPositionX < viewMask.left + 100 * resMultiplier && viewMask.left > 0){
                 viewMask.left -= 1 * resMultiplier;
             }
         }
