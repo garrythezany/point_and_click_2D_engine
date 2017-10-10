@@ -9,6 +9,7 @@ configure_file(images/sprite_full.png sprite_full.png COPYONLY)
 configure_file(images/cursor.png cursor.png COPYONLY)
 configure_file(images/shop.png shop.png COPYONLY)
 configure_file(images/bedroom.png bedroom.png COPYONLY)
+configure_file(images/arcade.png arcade.png COPYONLY)
 
 add_executable(SFML ${SOURCE_FILES})
 
