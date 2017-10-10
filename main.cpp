@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cmath>
 #include <SFML/Graphics.hpp>
 #include "Cursor.cpp"
 #include "Player.cpp"
