@@ -35,7 +35,22 @@ public:
 class Player{
 private:
     sf::Texture playerTexture;
-    
+
+    // TODO - fix function - sprite disappears on click
+    void iterateSprite(int top, int startLeft, int maxLeft, int incrementLeft, float speed){
+        playerMask.top = top;
+        if (clock.getElapsedTime().asSeconds() > speed){
+            if (playerMask.left == maxLeft) {
+                playerMask.left = startLeft;
+            }
+            else {
+                playerMask.left += incrementLeft;
+            }
+            playerSprite.setTextureRect(playerMask);
+            clock.restart();
+        }
+    }
+
 public:
     // init Objects
     sf::IntRect playerMask;
@@ -60,21 +75,6 @@ public:
 
     void setTarget(){
         moveTarget = sf::Vector2f(window.mapPixelToCoords(sf::Mouse::getPosition(window)));
-    }
-
-    // TODO - fix function - sprite disappears on click
-    void iterateSprite(int top, int startLeft, int maxLeft, int incrementLeft, float speed){
-        playerMask.top = top;
-        if (clock.getElapsedTime().asSeconds() > speed){
-            if (playerMask.left == maxLeft) {
-                playerMask.left = startLeft;
-            }
-            else {
-                playerMask.left += incrementLeft;
-            }
-            playerSprite.setTextureRect(playerMask);
-            clock.restart();
-        }
     }
 
     void idle(){
