@@ -8,13 +8,13 @@ sf::Texture cursorTexture;
 sf::Sprite cursorSprite;
 
 // Constructor
-Cursor(){
+Cursor::Cursor(){
     cursorTexture.loadFromFile("cursor.png");
     cursorSprite.setTexture(cursorTexture);
     cursorSprite.setOrigin(8, 8);
     cursorSprite.scale(resMultiplier, resMultiplier);
     cursorSprite.setPosition(400, 400);
 }
-void update(){
+Cursor::void update(){
     cursorSprite.setPosition(window.mapPixelToCoords(sf::Mouse::getPosition(window)));
 }
