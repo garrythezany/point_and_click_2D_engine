@@ -33,9 +33,11 @@ public:
 };
 
 class Player{
+private:
+    sf::Texture playerTexture;
+    
 public:
     // init Objects
-    sf::Texture playerTexture;
     sf::IntRect playerMask;
     sf::Sprite playerSprite;
     sf::Clock clock;
