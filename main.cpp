@@ -211,7 +211,7 @@ public:
         }
     }
 
-    void scrollView(float playerPositionX){
+    void scrollHorizontal(float playerPositionX){
         if (isScrollable){
             if (playerPositionX > viewMask.width + viewMask.left - 100 * resMultiplier && roomTexture.getSize().x * resMultiplier > viewMask.width + viewMask.left){
                 viewMask.left += 1 * resMultiplier;
@@ -263,7 +263,7 @@ int main() {
 
         window.setView(currentRoom.view);
 
-        currentRoom.scrollView(currentPlayer.playerSprite.getPosition().x);
+        currentRoom.scrollHorizontal(currentPlayer.playerSprite.getPosition().x);
         currentRoom.view.reset(currentRoom.viewMask);
 
         window.clear(sf::Color::Black);
