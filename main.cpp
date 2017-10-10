@@ -168,7 +168,7 @@ class Room{
 };
 
 int main() {
-
+    sf::Event event;
     window.create(sf::VideoMode(1280,800,32),"Bronko Engine");
     window.setFramerateLimit(90);
     window.setMouseCursorVisible(false);
@@ -181,8 +181,6 @@ int main() {
     Room bedroom("bedroom.png");
     Room shop("shop.png");
     Player player("sprite_full.png");
-
-    sf::Event event;
 
     while(window.isOpen()){
         while(window.pollEvent(event)) {
