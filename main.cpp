@@ -53,7 +53,23 @@ class Player{
             moveTarget = sf::Vector2f(sf::Mouse::getPosition(window));
         }
 
+        // TODO - fix function - sprite disappears on click
+        void iterateSprite(int top, int startLeft, int maxLeft, int incrementLeft, float speed){
+            playerMask.top = top;
+            if (clock.getElapsedTime().asSeconds() > speed){
+                if (playerMask.left == maxLeft) {
+                    playerMask.left = startLeft;
+                }
+                else {
+                    playerMask.left += incrementLeft;
+                }
+                playerSprite.setTextureRect(playerMask);
+                clock.restart();
+            }
+        }
+
         void idle(){
+            // TODO - use iterateSprite()
             playerMask.top = 0;
             if (clock.getElapsedTime().asSeconds() > 0.2f){
                 if (playerMask.left == 448) {
@@ -90,6 +106,7 @@ class Player{
 
             // walk left
             if (direction.x < 0 && positiveDirectionX > positiveDirectionY){
+                // TODO - use iterateSprite()
                 playerMask.top = 80;
                 if (clock.getElapsedTime().asSeconds() > 0.08f){
                     if (playerMask.left >= 192) {
@@ -104,6 +121,7 @@ class Player{
             }
             // walk right
             else if (direction.x > 0 && positiveDirectionX > positiveDirectionY){
+                // TODO - use iterateSprite()
                 playerMask.top = 160;
                 if (clock.getElapsedTime().asSeconds() > 0.08f) {
                     if (playerMask.left >= 192) {
@@ -117,6 +135,7 @@ class Player{
             }
             // walk front
             else if (positiveDirectionX < positiveDirectionY && direction.y > 0){
+                // TODO - use iterateSprite()
                 playerMask.top = 240;
                 if (clock.getElapsedTime().asSeconds() > 0.08f) {
                     if (playerMask.left >= 320) {
@@ -130,6 +149,7 @@ class Player{
             }
             // walk back
             else if (positiveDirectionX < positiveDirectionY && direction.y < 0){
+                // TODO - use iterateSprite()
                 playerMask.top = 320;
                 if (clock.getElapsedTime().asSeconds() > 0.08f) {
                     if (playerMask.left >= 320) {
@@ -158,13 +178,12 @@ class Room{
 
     public:
         sf::Sprite roomSprite;
-
-    // constructor
-    explicit Room(const string &filePath){
-        roomTexture.loadFromFile(filePath);
-        roomSprite.setTexture(roomTexture);
-        roomSprite.scale(4.f, 4.f);
-    }
+        // constructor
+        explicit Room(const string &filePath){
+            roomTexture.loadFromFile(filePath);
+            roomSprite.setTexture(roomTexture);
+            roomSprite.scale(4.f, 4.f);
+        }
 };
 
 int main() {
