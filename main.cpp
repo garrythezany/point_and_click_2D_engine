@@ -45,7 +45,7 @@ class Player{
             playerSprite.setTextureRect(playerMask);
             playerSprite.setOrigin(32, 77);
             playerSprite.setPosition(600, 600);
-            playerSprite.scale(4.f, 4.f);
+            playerSprite.scale(5.f, 5.f);
             moveTarget = sf::Vector2f(playerSprite.getPosition());
         }
 
@@ -188,7 +188,7 @@ class Room{
 
 int main() {
     sf::Event event;
-    window.create(sf::VideoMode(1280,800,32),"Bronko Engine");
+    window.create(sf::VideoMode(1600,1000,32),"Bronko Engine");
     window.setFramerateLimit(90);
     window.setMouseCursorVisible(false);
 
