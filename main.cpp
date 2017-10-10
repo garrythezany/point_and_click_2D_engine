@@ -10,7 +10,7 @@ using namespace std;
 //sf::RenderWindow window;
 
 // Multiplier for 320x200px base resolution
-unsigned int resMultiplier = 2;
+unsigned int resMultiplier = 7;
 float resMultiplierF = resMultiplier;
 
 // Classes

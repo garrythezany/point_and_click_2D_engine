@@ -51,20 +51,6 @@ public:
         moveTarget = sf::Vector2f(_window.mapPixelToCoords(sf::Mouse::getPosition(_window)));
     }
 
-    void idle(){
-        // TODO - use iterateSprite()
-        playerMask.top = 0;
-        if (clock.getElapsedTime().asSeconds() > 0.2f){
-            if (playerMask.left == 448) {
-                playerMask.left = 0;
-            }
-            else {
-                playerMask.left += 64;
-            }
-            playerSprite.setTextureRect(playerMask);
-            clock.restart();
-        }
-    }
     void walk(){
         sf::Vector2f direction = sf::Vector2f(moveTarget.x, moveTarget.y) - playerSprite.getPosition();
         float magnitude = sqrt((direction.x * direction.x) + (direction.y * direction.y));
@@ -89,62 +75,26 @@ public:
 
         // walk left
         if (direction.x < 0 && positiveDirectionX > positiveDirectionY){
-            // TODO - use iterateSprite()
-            playerMask.top = 80;
-            if (clock.getElapsedTime().asSeconds() > 0.08f){
-                if (playerMask.left >= 192) {
-                    playerMask.left = 0;
-                }
-                else {
-                    playerMask.left += 64;
-                }
-                playerSprite.setTextureRect(playerMask);
-                clock.restart();
-            }
+            iterateSprite(80, 0, 192, 64, .08f);
         }
             // walk right
         else if (direction.x > 0 && positiveDirectionX > positiveDirectionY){
-            // TODO - use iterateSprite()
-            playerMask.top = 160;
-            if (clock.getElapsedTime().asSeconds() > 0.08f) {
-                if (playerMask.left >= 192) {
-                    playerMask.left = 0;
-                } else {
-                    playerMask.left += 64;
-                }
-                playerSprite.setTextureRect(playerMask);
-                clock.restart();
-            }
+            iterateSprite(160, 0, 192, 64, .08f);
         }
             // walk front
         else if (positiveDirectionX < positiveDirectionY && direction.y > 0){
-            // TODO - use iterateSprite()
-            playerMask.top = 240;
-            if (clock.getElapsedTime().asSeconds() > 0.08f) {
-                if (playerMask.left >= 320) {
-                    playerMask.left = 0;
-                } else {
-                    playerMask.left += 64;
-                }
-                playerSprite.setTextureRect(playerMask);
-                clock.restart();
-            }
+            iterateSprite(240, 0, 320, 64, .08f);
         }
             // walk back
         else if (positiveDirectionX < positiveDirectionY && direction.y < 0){
-            // TODO - use iterateSprite()
-            playerMask.top = 320;
-            if (clock.getElapsedTime().asSeconds() > 0.08f) {
-                if (playerMask.left >= 320) {
-                    playerMask.left = 0;
-                } else {
-                    playerMask.left += 64;
-                }
-                playerSprite.setTextureRect(playerMask);
-                clock.restart();
-            }
+            iterateSprite(320, 0, 320, 64, .08f);
         }
-    };
+    }
+
+    void idle(){
+        iterateSprite(0, 0, 448, 64, .2f);
+    }
+
     void animate(){
         if (round(moveTarget.x) != round(playerSprite.getPosition().x) && round(moveTarget.y) != round(playerSprite.getPosition().y)){
             walk();
