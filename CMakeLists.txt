@@ -3,7 +3,7 @@ project(SFML)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(SOURCE_FILES main.cpp OpenSans-Regular.ttf)
+set(SOURCE_FILES src/main.cpp OpenSans-Regular.ttf src/Cursor.cpp src/Cursor.h src/config.cpp)
 
 configure_file(images/sprite_full.png sprite_full.png COPYONLY)
 configure_file(images/cursor.png cursor.png COPYONLY)
