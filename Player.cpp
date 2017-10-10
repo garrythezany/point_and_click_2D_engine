@@ -11,11 +11,10 @@ class Player{
 private:
     sf::Texture playerTexture;
 
-    // TODO - fix function - sprite disappears on click
     void iterateSprite(int top, int startLeft, int maxLeft, int incrementLeft, float speed){
         playerMask.top = top;
         if (clock.getElapsedTime().asSeconds() > speed){
-            if (playerMask.left == maxLeft) {
+            if (playerMask.left >= maxLeft) {
                 playerMask.left = startLeft;
             }
             else {
