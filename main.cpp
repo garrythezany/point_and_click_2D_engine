@@ -252,7 +252,12 @@ int main() {
         currentPlayer.animate();
         cursor.update();
 
-        if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
+        if(sf::Mouse::isButtonPressed(sf::Mouse::Left) &&
+            sf::Mouse::getPosition(window).x <= window.getSize().x &&
+            sf::Mouse::getPosition(window).y <= window.getSize().y &&
+            sf::Mouse::getPosition(window).x >= 0 &&
+            sf::Mouse::getPosition(window).y >= 0)
+        {
             currentPlayer.setTarget();
         }
 
