@@ -41,7 +41,7 @@ public:
         playerTexture.loadFromFile(filePath);
         playerSprite.setTexture(playerTexture);
         playerSprite.setTextureRect(playerMask);
-        playerSprite.setOrigin(32, 77);
+        playerSprite.setOrigin(32, 76);
         playerSprite.setPosition(200 * 2, 115 * 2);
         playerSprite.scale(2, 2);
         moveTarget = sf::Vector2f(playerSprite.getPosition());
@@ -49,6 +49,10 @@ public:
 
     void setTarget(sf::RenderWindow& _window){
         moveTarget = sf::Vector2f(_window.mapPixelToCoords(sf::Mouse::getPosition(_window)));
+    }
+
+    void setTarget(sf::Vector2f target){
+        moveTarget = target;
     }
 
     void walk(){
