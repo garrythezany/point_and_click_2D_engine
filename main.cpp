@@ -216,6 +216,40 @@ int main() {
 
     BRO::Item test("cursor.png", 500, 500);
 
+
+
+    sf::ConvexShape poly1;
+    poly1.setPointCount(4);
+    poly1.setPoint(0, sf::Vector2f(6 * resMultiplier, 126 * resMultiplier));
+    poly1.setPoint(1, sf::Vector2f(58 * resMultiplier, 126 * resMultiplier));
+    poly1.setPoint(2, sf::Vector2f(77 * resMultiplier, 115 * resMultiplier));
+    poly1.setPoint(3, sf::Vector2f(88 * resMultiplier, 98 * resMultiplier));
+    poly1.setFillColor(sf::Color(250, 0, 0, 180));
+    sf::ConvexShape poly2;
+    poly2.setPointCount(5);
+    poly2.setPoint(0, sf::Vector2f(77 * resMultiplier, 115 * resMultiplier));
+    poly2.setPoint(1, sf::Vector2f(164 * resMultiplier, 115 * resMultiplier));
+    poly2.setPoint(2, sf::Vector2f(167 * resMultiplier, 106 * resMultiplier));
+    poly2.setPoint(3, sf::Vector2f(166 * resMultiplier, 98 * resMultiplier));
+    poly2.setPoint(4, sf::Vector2f(88 * resMultiplier, 98 * resMultiplier));
+    poly2.setFillColor(sf::Color(0, 250, 0, 180));
+    sf::ConvexShape poly3;
+    poly3.setPointCount(6);
+    poly3.setPoint(0, sf::Vector2f(167 * resMultiplier, 106 * resMultiplier));
+    poly3.setPoint(1, sf::Vector2f(164 * resMultiplier, 115 * resMultiplier));
+    poly3.setPoint(2, sf::Vector2f(164 * resMultiplier, 125 * resMultiplier));
+    poly3.setPoint(3, sf::Vector2f(626 * resMultiplier, 125 * resMultiplier));
+    poly3.setPoint(4, sf::Vector2f(569 * resMultiplier, 106 * resMultiplier));
+    poly3.setPoint(5, sf::Vector2f(511 * resMultiplier, 106 * resMultiplier));
+    poly3.setFillColor(sf::Color(0, 0, 250, 180));
+    sf::ConvexShape poly4;
+    poly4.setPointCount(4);
+    poly4.setPoint(0, sf::Vector2f(511 * resMultiplier, 106 * resMultiplier));
+    poly4.setPoint(1, sf::Vector2f(569 * resMultiplier, 106 * resMultiplier));
+    poly4.setPoint(2, sf::Vector2f(550 * resMultiplier, 98 * resMultiplier));
+    poly4.setPoint(3, sf::Vector2f(525 * resMultiplier, 98 * resMultiplier));
+    poly4.setFillColor(sf::Color(0, 250, 0, 180));
+
     while(window.isOpen()){
         while(window.pollEvent(event)) {
             if(event.type == sf::Event::Closed){
@@ -245,6 +279,10 @@ int main() {
         //window.draw(bedroom.roomSprite);
         //window.draw(shop.roomSprite);
         window.draw(currentRoom.roomSprite);
+        window.draw(poly1);
+        window.draw(poly2);
+        window.draw(poly3);
+        window.draw(poly4);
         window.draw(test.sprite);
         window.draw(currentPlayer.playerSprite);
         window.draw(cursor.cursorSprite);
