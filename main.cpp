@@ -25,8 +25,8 @@ namespace BRO {
             cursorTexture.loadFromFile("cursor.png");
             cursorSprite.setTexture(cursorTexture);
             cursorSprite.setOrigin(8, 8);
-            cursorSprite.scale(resMultiplier, resMultiplier);
             cursorSprite.setPosition(400, 400);
+            cursorSprite.scale(resMultiplier, resMultiplier);
         }
         void update(){
             cursorSprite.setPosition(window.mapPixelToCoords(sf::Mouse::getPosition(window)));
@@ -55,7 +55,13 @@ namespace BRO {
             playerSprite.setTextureRect(playerMask);
             playerSprite.setOrigin(32, 77);
             playerSprite.setPosition(200 * resMultiplier, 115 * resMultiplier);
-            playerSprite.scale(resMultiplier, resMultiplier);
+
+            // scale sprite based on y-axis,
+            // where y = 100 * resMultiplier results in a scale of 1 * resMultiplier
+            playerSprite.setScale(0.01f * (playerSprite.getPosition().y / resMultiplier) * resMultiplier,
+                                  0.01f * (playerSprite.getPosition().y / resMultiplier) * resMultiplier);
+
+            // The target, that the player moves towards
             moveTarget = sf::Vector2f(playerSprite.getPosition());
         }
 
@@ -70,6 +76,8 @@ namespace BRO {
                     playerMask.left += incrementLeft;
                 }
                 playerSprite.setTextureRect(playerMask);
+                //playerSprite.scale(resMultiplier / ((playerSprite.getPosition().y / resMultiplier) / 115),
+                //                   resMultiplier / ((playerSprite.getPosition().y / resMultiplier) / 115));
                 clock.restart();
                 //playerTexture.update(window);
             }
@@ -86,6 +94,10 @@ namespace BRO {
 
             // overall player-speed
             playerSprite.move(unitVector * 0.8f * resMultiplierF);
+
+            // scale player based on y-axis
+            playerSprite.setScale((0.01f * (playerSprite.getPosition().y / resMultiplier) * 0.999f) * resMultiplier,
+                                  (0.01f * (playerSprite.getPosition().y / resMultiplier) * 0.999f) * resMultiplier);
 
             // direction stuff
             float positiveDirectionX;
@@ -260,12 +272,13 @@ int main() {
         currentPlayer.animate();
         cursor.update();
 
-        if(sf::Mouse::isButtonPressed(sf::Mouse::Left) &&
+        bool clickedInWindow (sf::Mouse::isButtonPressed(sf::Mouse::Left) &&
             sf::Mouse::getPosition(window).x <= window.getSize().x &&
             sf::Mouse::getPosition(window).y <= window.getSize().y &&
             sf::Mouse::getPosition(window).x >= 0 &&
-            sf::Mouse::getPosition(window).y >= 0)
-        {
+            sf::Mouse::getPosition(window).y >= 0);
+
+        if(clickedInWindow){
             currentPlayer.setTarget();
         }
 
