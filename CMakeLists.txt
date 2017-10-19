@@ -17,7 +17,7 @@ set(SOURCE_FILES
         src/Cursor.cpp
         src/Cursor.h
         src/Player.cpp
-        src/Player.h)
+        src/Player.h src/Room.cpp src/Room.h src/Item.cpp src/Item.h)
 
 configure_file(images/sprite_full.png sprite_full.png COPYONLY)
 configure_file(images/cursor.png cursor.png COPYONLY)

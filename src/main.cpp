@@ -4,100 +4,9 @@
 
 #include "Game.h"
 
-
 using namespace std;
 
 BRO::Game game;
-
-// Classes
-namespace BRO {
-
-    //----------------------------
-    // ROOMS
-    //----------------------------
-    class Room{
-    private:
-        sf::Texture texture;
-        bool isScrollable;
-
-    public:
-        sf::View view;
-        sf::FloatRect mask;
-        sf::Sprite sprite;
-        BRO::NavMesh navMesh;
-
-        // max number of shapes hardcoded to 20
-        sf::ConvexShape shapes[20];
-        bool drawShapes;
-        
-        // constructor
-        explicit Room(const string &filePath){
-            mask.left = 0;
-            mask.top = 0;
-            mask.width = 320 * game.resMultiplier;
-            mask.height = 200 * game.resMultiplier;
-            view.reset(mask);
-            texture.loadFromFile(filePath);
-            sprite.setTexture(texture);
-            sprite.scale(game.resMultiplier,game.resMultiplier);
-            //cout << "size is " << texture.getSize().x << endl;
-            if (texture.getSize().x != mask.width || texture.getSize().y != mask.height){
-                isScrollable = true;
-            } else {
-                isScrollable = false;
-            }
-            // draw pathfinding shapes for debugging
-            drawShapes = true;
-        }
-
-        void setShape(int shapeIndex, sf::ConvexShape &shape){
-            shapes[shapeIndex] = shape;
-        }
-
-        void scrollHorizontal(float playerPositionX){
-            if (isScrollable){
-                if (playerPositionX > mask.width + mask.left - 100 * game.resMultiplier && texture.getSize().x * game.resMultiplier > mask.width + mask.left){
-                    mask.left += 1 * game.resMultiplier;
-                } else if (playerPositionX < mask.left + 100 * game.resMultiplier && mask.left > 0){
-                    mask.left -= 1 * game.resMultiplier;
-                }
-            }
-        }
-
-        void setNavMesh(const BRO::NavMesh &_navMesh){
-            navMesh = _navMesh;
-        }
-
-        void drawRoom(){
-            game.window.setView(view);
-            game.window.draw(sprite);
-
-            if (drawShapes){
-                for (int i=0; i < 20; i++){
-                    game.window.draw(shapes[i]);
-                }
-            }
-        }
-    };
-
-    //-----------------------------
-    // ITEMS
-    //-----------------------------
-    class Item{
-    private:
-        sf::Texture texture;
-
-    public:
-        sf::Sprite sprite;
-
-        Item(const string filePath, float positionX, float positionY){
-            texture.loadFromFile(filePath);
-            sprite.setTexture(texture);
-            sprite.scale(game.resMultiplier,game.resMultiplier);
-            sprite.setPosition(positionX, positionY);
-        }
-    };
-}
 
 int main() {
     sf::Event event;
@@ -178,7 +87,7 @@ int main() {
     cursor.setScale(game.resMultiplier);
     //BRO::Room bedroom("bedroom.png");
     //BRO::Room shop("shop.png");
-    BRO::Room arcade("arcade.png");
+    BRO::Room arcade("arcade.png", game.resMultiplier);
     arcade.setShape(0, poly1);
     arcade.setShape(1, poly2);
     arcade.setShape(2, poly3);
@@ -189,11 +98,12 @@ int main() {
     BRO::Player player("sprite_full.png", game.resMultiplier);
     player.sprite.setPosition(100 * game.resMultiplier, 140 * game.resMultiplier);
     player.sprite.setScale(game.resMultiplier, game.resMultiplier);
+    player.setTarget(sf::Vector2f(80 * game.resMultiplier, 140 * game.resMultiplier));
 
     BRO::Room currentRoom = arcade;
     BRO::Player currentPlayer = player;
 
-    BRO::Item test("cursor.png", 500, 500);
+    BRO::Item test("cursor.png", 500, 500, game.resMultiplier);
 
     while(game.window.isOpen()){
         while(game.window.pollEvent(event)) {
@@ -215,8 +125,10 @@ int main() {
             currentPlayer.setTarget(game.window.mapPixelToCoords(sf::Mouse::getPosition(game.window)));
         }
 
+        cout << currentPlayer.sprite.getPosition().x << " x " << currentPlayer.sprite.getPosition().y << endl;
 
-        currentRoom.scrollHorizontal(currentPlayer.sprite.getPosition().x);
+
+        currentRoom.scrollHorizontal(currentPlayer.sprite.getPosition().x, game.resMultiplier);
         currentRoom.view.reset(currentRoom.mask);
 
         game.window.clear(sf::Color::Black);
@@ -224,7 +136,7 @@ int main() {
         //window.draw(bedroom.sprite);
         //window.draw(shop.sprite);
         //window.draw(currentRoom.sprite);
-        currentRoom.drawRoom();
+        currentRoom.drawRoom(game.window);
 
         game.window.draw(currentPlayer.sprite);
         game.window.draw(cursor.sprite);

@@ -10,6 +10,8 @@
 #include "NavMesh.h"
 #include "Cursor.h"
 #include "Player.h"
+#include "Room.h"
+#include "Item.h"
 
 namespace BRO{
     class Game {

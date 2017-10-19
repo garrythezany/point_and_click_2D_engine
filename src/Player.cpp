@@ -4,6 +4,9 @@
 
 #include "Player.h"
 
+//---------------------------
+// FUNCTION - Constructor
+//---------------------------
 BRO::Player::Player(const std::string &filePath, int resMultiplier){
     mask.left = 0;
     mask.top = 0;
@@ -23,6 +26,9 @@ BRO::Player::Player(const std::string &filePath, int resMultiplier){
     moveTarget = sf::Vector2f(sprite.getPosition());
 }
 
+//---------------------------
+// FUNCTION - Sprite Animation System
+//---------------------------
 void BRO::Player:: iterateSprite(int top, int startLeft, int maxLeft, int incrementLeft, float speed){
     mask.top = top;
     if (clock.getElapsedTime().asSeconds() > speed){
@@ -37,10 +43,16 @@ void BRO::Player:: iterateSprite(int top, int startLeft, int maxLeft, int increm
     }
 }
 
+//---------------------------
+// FUNCTION - set Target
+//---------------------------
 void BRO::Player:: setTarget(sf::Vector2f coordinates){
     moveTarget = sf::Vector2f(coordinates);
 }
 
+//---------------------------
+// FUNCTION - walking
+//---------------------------
 void BRO::Player:: walk(int resMultiplier, float resMultiplierF){
     sf::Vector2f direction = sf::Vector2f(moveTarget.x, moveTarget.y) - sprite.getPosition();
     float magnitude = sqrt((direction.x * direction.x) + (direction.y * direction.y));
@@ -86,10 +98,16 @@ void BRO::Player:: walk(int resMultiplier, float resMultiplierF){
     }
 }
 
+//---------------------------
+// FUNCTION - idle animation
+//---------------------------
 void BRO::Player::idle(){
     iterateSprite(0, 0, 448, 64, .2f);
 }
 
+//---------------------------
+// FUNCTION - handling all animations
+//---------------------------
 void BRO::Player:: animate(int resMultiplier, float resMultiplierF){
     if (round(moveTarget.x) != round(sprite.getPosition().x) && round(moveTarget.y) != round(sprite.getPosition().y)){
         walk(resMultiplier, resMultiplierF);
@@ -98,6 +116,9 @@ void BRO::Player:: animate(int resMultiplier, float resMultiplierF){
     }
 }
 
+//---------------------------
+// FUNCTION - get X-Coordinate
+//---------------------------
 int BRO::Player::getPositionX(){
     float posF = sprite.getPosition().x;
     int posI = floor((posF * 100.0) + 0.5) / 100;
