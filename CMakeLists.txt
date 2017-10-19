@@ -31,7 +31,6 @@ configure_file(images/shop.png shop.png COPYONLY)
 configure_file(images/bedroom.png bedroom.png COPYONLY)
 configure_file(images/arcade.png arcade.png COPYONLY)
 configure_file(images/studio.png studio.png COPYONLY)
-configure_file(images/studio_old.png studio_old.png COPYONLY)
 
 add_executable(SFML ${SOURCE_FILES} src/Node.cpp src/Node.h)
 
