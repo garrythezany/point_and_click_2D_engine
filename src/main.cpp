@@ -6,14 +6,26 @@
 
 using namespace std;
 
-BRO::Game game;
-
 int main() {
+    BRO::Game game;
+
     sf::Event event;
+
+    // Set default game resolution
+    // 1 = 320x200
+    // 2 = 640x400
+    // 3 = 960x600
+    // 4 = 1280x800
+    // 5 = 1600x1000
+    // 6 = 1920x1200
+    // 7 = 2240x1400
+    // 8 = 2560x1600
+    // 9 = 2880x1800
+    game.setResMultiplier(6);
+
     game.window.create(sf::VideoMode(320 * game.resMultiplier, 200 * game.resMultiplier, 32), "PNR Engine", sf::Style::Titlebar | sf::Style::Close);
     game.window.setFramerateLimit(90);
     game.window.setMouseCursorVisible(false);
-
     //BRO::World world;
     //world.initStudioRoom(game.resMultiplier);
     BRO::Room studioRoom("studio.png", game.resMultiplier);
@@ -24,10 +36,6 @@ int main() {
 
     BRO::Cursor cursor;
     cursor.setScale(game.resMultiplier);
-    //BRO::Room bedroom("bedroom.png");
-    //BRO::Room shop("shop.png");
-
-
 
     BRO::Player player("sprite_full.png", game.resMultiplier);
     player.sprite.setPosition(100 * game.resMultiplier, 100 * game.resMultiplier);

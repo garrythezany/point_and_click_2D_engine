@@ -13,7 +13,7 @@
 namespace BRO{
     class Game {
     public:
-        unsigned int resMultiplier = 5;
+        unsigned int resMultiplier;
         float resMultiplierF = resMultiplier;
 
         sf::RenderWindow window;
