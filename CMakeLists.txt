@@ -5,12 +5,6 @@ set(CMAKE_CXX_STANDARD 11)
 
 set(SOURCE_FILES
         src/main.cpp
-        src/Node.cpp
-        src/Node.h
-        src/Polygon.cpp
-        src/Polygon.h
-        src/NavMesh.cpp
-        src/NavMesh.h
         src/Game.cpp
         src/Game.h
         src/Cursor.cpp
@@ -22,7 +16,9 @@ set(SOURCE_FILES
         src/Item.cpp
         src/Item.h
         src/World.cpp
-        src/World.h)
+        src/World.h
+        src/Pathfinder.cpp
+        src/Pathfinder.h)
 
 configure_file(images/sprite_full.png sprite_full.png COPYONLY)
 configure_file(images/cursor.png cursor.png COPYONLY)

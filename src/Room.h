@@ -2,8 +2,8 @@
 #define PNR_Engine_ROOM_H
 
 #include <SFML/Graphics.hpp>
-#include "NavMesh.h"
 #include "Game.h"
+#include "Pathfinder.h"
 
 namespace BRO{
     class Room{

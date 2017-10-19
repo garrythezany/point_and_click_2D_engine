@@ -1,9 +1,7 @@
 #ifndef PNR_Engine_GAME_H
 #define PNR_Engine_GAME_H
 
-#include "Node.h"
-#include "Polygon.h"
-#include "NavMesh.h"
+#include "Pathfinder.h"
 #include "Cursor.h"
 #include "Player.h"
 #include "Room.h"
@@ -14,7 +12,7 @@ namespace BRO{
     class Game {
     public:
         unsigned int resMultiplier;
-        float resMultiplierF = resMultiplier;
+        float resMultiplierF;
 
         sf::RenderWindow window;
 

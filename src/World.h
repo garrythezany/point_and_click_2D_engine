@@ -3,9 +3,7 @@
 
 #include <vector>
 #include "Room.h"
-#include "Node.h"
-#include "Polygon.h"
-#include "NavMesh.h"
+#include "Pathfinder.h"
 
 namespace BRO{
     class World {
