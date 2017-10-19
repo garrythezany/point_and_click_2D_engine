@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cstdarg>
 #include <cmath>
 #include <SFML/Graphics.hpp>
 
@@ -13,6 +12,44 @@ float resMultiplierF = resMultiplier;
 
 // Classes
 namespace BRO {
+
+    //----------------------------
+    // NavMesh-Nodes
+    //----------------------------
+    class Node{
+    public:
+        vector<Node> adjacencyList;
+
+        void addAdjacent(Node node) {
+            adjacencyList.push_back(node);
+        }
+    };
+
+    //----------------------------
+    // Polygon
+    //----------------------------
+    class Polygon{
+    public:
+        sf::ConvexShape shape;
+        Node node;
+
+        Polygon(sf::ConvexShape &_shape, BRO::Node &_node){
+            shape = _shape;
+            node = _node;
+        }
+    };
+
+    //---------------------------
+    // Nav-Mesh
+    //---------------------------
+    class NavMesh{
+    public:
+        std::vector<BRO::Polygon> polyList;
+
+        void addPoly(BRO::Polygon &poly){
+            polyList.push_back(poly);
+        }
+    };
 
     //---------------------------
     // CURSOR
@@ -246,6 +283,7 @@ int main() {
     window.setFramerateLimit(90);
     window.setMouseCursorVisible(false);
 
+
     // test-shapes for arcade-room
     sf::ConvexShape poly1;
     poly1.setPointCount(4);
@@ -278,6 +316,34 @@ int main() {
     poly4.setPoint(2, sf::Vector2f(550 * resMultiplier, 98 * resMultiplier));
     poly4.setPoint(3, sf::Vector2f(525 * resMultiplier, 98 * resMultiplier));
     poly4.setFillColor(sf::Color(0, 250, 0, 180));
+    // test-nodes
+    BRO::Node A;
+    BRO::Node B;
+    BRO::Node C;
+    BRO::Node D;
+    // assigning adjacent nodes
+    A.addAdjacent(B);
+    B.addAdjacent(A);
+    B.addAdjacent(C);
+    C.addAdjacent(B);
+    C.addAdjacent(D);
+    D.addAdjacent(C);
+    // create BRO::Polygons containing a convexShape + a node
+    BRO::Polygon aPoly(poly1, A);
+    BRO::Polygon bPoly(poly2, B);
+    BRO::Polygon cPoly(poly3, C);
+    BRO::Polygon dPoly(poly4, D);
+    // now we have Polygons with
+    //      a Node + corresponding adjacent nodes
+    //      a Shape + corresponding vertices
+    BRO::NavMesh arcadeNavMesh;
+    arcadeNavMesh.addPoly(aPoly);
+    arcadeNavMesh.addPoly(bPoly);
+    arcadeNavMesh.addPoly(cPoly);
+    arcadeNavMesh.addPoly(dPoly);
+
+    // testing NavMesh data - should print "6"
+    cout << arcadeNavMesh.polyList[2].shape.getPointCount() << endl;
 
     // Frame Clock
     sf::Clock clock;
