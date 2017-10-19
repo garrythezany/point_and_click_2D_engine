@@ -20,7 +20,7 @@ namespace BRO {
     public:
         vector<Node> adjacencyList;
 
-        void addAdjacent(Node node) {
+        void addAdjacent(const Node &node) {
             adjacencyList.push_back(node);
         }
     };
