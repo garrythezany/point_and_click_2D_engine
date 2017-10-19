@@ -5,7 +5,7 @@
 #include "Player.h"
 
 //---------------------------
-// FUNCTION - Constructor
+// Constructor
 //---------------------------
 BRO::Player::Player(const std::string &filePath, int resMultiplier){
     mask.left = 0;
@@ -27,7 +27,7 @@ BRO::Player::Player(const std::string &filePath, int resMultiplier){
 }
 
 //------------------------------------
-// FUNCTION - Sprite Animation System
+// Sprite Animation System
 //------------------------------------
 void BRO::Player:: iterateSprite(int top, int startLeft, int maxLeft, int incrementLeft, float speed){
     mask.top = top;
@@ -44,14 +44,14 @@ void BRO::Player:: iterateSprite(int top, int startLeft, int maxLeft, int increm
 }
 
 //---------------------------
-// FUNCTION - set Target
+// set Target
 //---------------------------
 void BRO::Player:: setTarget(sf::Vector2f coordinates){
     moveTarget = sf::Vector2f(coordinates);
 }
 
 //----------------------------------------------
-// FUNCTION - walk-animations + sprite movement
+// walk-animations + sprite movement
 //----------------------------------------------
 void BRO::Player:: walk(int resMultiplier, float resMultiplierF){
     sf::Vector2f direction = sf::Vector2f(moveTarget.x, moveTarget.y) - sprite.getPosition();
@@ -99,14 +99,14 @@ void BRO::Player:: walk(int resMultiplier, float resMultiplierF){
 }
 
 //---------------------------
-// FUNCTION - idle animation
+// idle animation
 //---------------------------
 void BRO::Player::idle(){
     iterateSprite(0, 0, 448, 64, .2f);
 }
 
 //------------------------------------
-// FUNCTION - handling all animations
+// handling all animations
 //------------------------------------
 void BRO::Player:: animate(int resMultiplier, float resMultiplierF){
     if (round(moveTarget.x) != round(sprite.getPosition().x) && round(moveTarget.y) != round(sprite.getPosition().y)){
@@ -117,7 +117,7 @@ void BRO::Player:: animate(int resMultiplier, float resMultiplierF){
 }
 
 //-----------------------------
-// FUNCTION - get X-Coordinate
+// get X-Coordinate
 //-----------------------------
 int BRO::Player::getPositionX(){
     float posF = sprite.getPosition().x;

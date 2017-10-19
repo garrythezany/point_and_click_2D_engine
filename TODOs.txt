@@ -7,8 +7,10 @@ TODO:
 --- ROOMS / WORLD
 - find a proper place to store NavMesh info inside/along the rooms
 - come up with a way to organize all rooms in the world
+- ?dynamic reordering? of draw calls to be able to use objects inside rooms, that overlap the player when at certain y-position and above
 
 --- PATH FINDING
 - Implement A-star or Dijkstra's algorithm for the node-graph of the NavMesh. This will preselect the polygons to perform the next algorithm
 - Get list of portals between the polygons, that A-star or Dijkstra outputs
 - SSF (Simple Stupid Funnel) algorithm to create the actual path across the portals to the target position
+    (Using convex polygons exclusively will guarantee that the portals associated with a polygon can always be reached from anywhere inside of the polygon)
