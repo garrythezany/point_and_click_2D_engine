@@ -207,6 +207,7 @@ namespace BRO {
         sf::View view;
         sf::FloatRect mask;
         sf::Sprite sprite;
+        BRO::NavMesh navMesh;
 
         // max number of shapes hardcoded to 20
         sf::ConvexShape shapes[20];
@@ -244,6 +245,10 @@ namespace BRO {
                     mask.left -= 1 * resMultiplier;
                 }
             }
+        }
+
+        void setNavMesh(const BRO::NavMesh &_navMesh){
+            navMesh = _navMesh;
         }
 
         void drawRoom(){
@@ -357,6 +362,9 @@ int main() {
     arcade.setShape(1, poly2);
     arcade.setShape(2, poly3);
     arcade.setShape(3, poly4);
+
+    arcade.setNavMesh(arcadeNavMesh);
+
     BRO::Player player("sprite_full.png");
 
     BRO::Room currentRoom = arcade;
