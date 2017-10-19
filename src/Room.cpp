@@ -1,10 +1,6 @@
-//
-// Created by Roman Hock on 19.10.17.
-//
-
 #include "Room.h"
 
-BRO::Room::Room(const std::string &filePath, int resMultiplier){
+BRO::Room::Room(const std::string &filePath, unsigned int &resMultiplier){
     mask.left = 0;
     mask.top = 0;
     mask.width = 320 * resMultiplier;
@@ -27,7 +23,7 @@ void BRO::Room::setShape(int shapeIndex, sf::ConvexShape &shape){
     shapes[shapeIndex] = shape;
 }
 
-void BRO::Room::scrollHorizontal(float playerPositionX, float resMultiplier){
+void BRO::Room::scrollHorizontal(float playerPositionX, unsigned int &resMultiplier){
     if (isScrollable){
         if (playerPositionX > mask.width + mask.left - 100 * resMultiplier && texture.getSize().x * resMultiplier > mask.width + mask.left){
             mask.left += 1 * resMultiplier;

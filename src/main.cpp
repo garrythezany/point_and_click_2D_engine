@@ -10,7 +10,7 @@ BRO::Game game;
 
 int main() {
     sf::Event event;
-    game.window.create(sf::VideoMode(320 * game.resMultiplier, 200 * game.resMultiplier, 32), "Bronko Engine", sf::Style::Titlebar | sf::Style::Close);
+    game.window.create(sf::VideoMode(320 * game.resMultiplier, 200 * game.resMultiplier, 32), "PNR Engine", sf::Style::Titlebar | sf::Style::Close);
     game.window.setFramerateLimit(90);
     game.window.setMouseCursorVisible(false);
 
@@ -30,7 +30,7 @@ int main() {
 
 
     BRO::Player player("sprite_full.png", game.resMultiplier);
-    player.sprite.setPosition(100 * game.resMultiplier, 140 * game.resMultiplier);
+    player.sprite.setPosition(100 * game.resMultiplier, 100 * game.resMultiplier);
     player.sprite.setScale(game.resMultiplier, game.resMultiplier);
     player.setTarget(sf::Vector2f(80 * game.resMultiplier, 140 * game.resMultiplier));
 

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(SFML)
+project(PNC_Engine)
 
 set(CMAKE_CXX_STANDARD 11)
 
@@ -31,7 +31,7 @@ configure_file(images/bedroom.png bedroom.png COPYONLY)
 configure_file(images/arcade.png arcade.png COPYONLY)
 configure_file(images/studio.png studio.png COPYONLY)
 
-add_executable(SFML ${SOURCE_FILES} src/Node.cpp src/Node.h)
+add_executable(SFML ${SOURCE_FILES})
 
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake_modules")
 find_package(SFML REQUIRED system window graphics network audio)

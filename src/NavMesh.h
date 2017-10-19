@@ -1,9 +1,5 @@
-//
-// Created by Roman Hock on 19.10.17.
-//
-
-#ifndef SFML_NAVMESH_H
-#define SFML_NAVMESH_H
+#ifndef PNR_Engine_NAVMESH_H
+#define PNR_Engine_NAVMESH_H
 
 #include "Polygon.h"
 
@@ -17,4 +13,4 @@ namespace BRO{
 
 }
 
-#endif //SFML_NAVMESH_H
+#endif //PNR_Engine_NAVMESH_H

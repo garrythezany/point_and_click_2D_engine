@@ -1,9 +1,5 @@
-//
-// Created by Roman Hock on 19.10.17.
-//
-
-#ifndef SFML_ROOM_H
-#define SFML_ROOM_H
+#ifndef PNR_Engine_ROOM_H
+#define PNR_Engine_ROOM_H
 
 #include <SFML/Graphics.hpp>
 #include "NavMesh.h"
@@ -26,11 +22,11 @@ namespace BRO{
         bool drawShapes;
 
         // constructor
-        Room(const std::string &filePath, int resMultiplier);
+        Room(const std::string &filePath, unsigned int &resMultiplier);
 
         void setShape(int shapeIndex, sf::ConvexShape &shape);
 
-        void scrollHorizontal(float playerPositionX, float resMultiplier);
+        void scrollHorizontal(float playerPositionX, unsigned int &resMultiplier);
 
         void setNavMesh(const BRO::NavMesh &_navMesh);
 
@@ -38,5 +34,4 @@ namespace BRO{
     };
 }
 
-
-#endif //SFML_ROOM_H
+#endif //PNR_Engine_ROOM_H

@@ -1,9 +1,5 @@
-//
-// Created by Roman Hock on 19.10.17.
-//
-
-#ifndef SFML_CURSOR_H
-#define SFML_CURSOR_H
+#ifndef PNR_Engine_CURSOR_H
+#define PNR_Engine_CURSOR_H
 
 #include <SFML/Graphics.hpp>
 #include "Game.h"
@@ -17,12 +13,11 @@ namespace BRO{
 
         Cursor();
 
-        void setScale(int _resMultiplier);
+        void setScale(unsigned int &resMultiplier);
 
         void update(sf::Vector2f coordinates);
 
     };
 }
 
-
-#endif //SFML_CURSOR_H
+#endif //PNR_Engine_CURSOR_H

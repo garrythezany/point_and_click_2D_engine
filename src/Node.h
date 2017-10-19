@@ -1,9 +1,5 @@
-//
-// Created by Roman Hock on 19.10.17.
-//
-
-#ifndef SFML_NODE_H
-#define SFML_NODE_H
+#ifndef PNR_Engine_NODE_H
+#define PNR_Engine_NODE_H
 
 #include <vector>
 
@@ -16,5 +12,4 @@ namespace BRO{
     };
 }
 
-
-#endif //SFML_NODE_H
+#endif //PNR_Engine_NODE_H

@@ -1,13 +1,9 @@
-//
-// Created by Roman Hock on 19.10.17.
-//
-
 #include "World.h"
 
 //--------------------
 // ARCADE ROOM - TEST
 //--------------------
-void BRO::World::initArcadeRoom(int resMultiplier){
+void BRO::World::initArcadeRoom(unsigned int &resMultiplier){
     //------------------
     // Room Setup
     //------------------
@@ -87,7 +83,7 @@ void BRO::World::initArcadeRoom(int resMultiplier){
 //--------------------
 // STUDIO ROOM - TEST
 //--------------------
-void BRO::World::initStudioRoom(int resMultiplier) {
+void BRO::World::initStudioRoom(unsigned int &resMultiplier) {
     //------------------
     // Room Setup
     //------------------
@@ -100,7 +96,7 @@ void BRO::World::initStudioRoom(int resMultiplier) {
 //--------------------
 // WORLD
 //--------------------
-void BRO::World::initWorld(int resMultiplier){
+void BRO::World::initWorld(unsigned int &resMultiplier){
     initStudioRoom(resMultiplier);
     initArcadeRoom(resMultiplier);
 }

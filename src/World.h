@@ -1,9 +1,5 @@
-//
-// Created by Roman Hock on 19.10.17.
-//
-
-#ifndef SFML_WORLD_H
-#define SFML_WORLD_H
+#ifndef PNR_Engine_WORLD_H
+#define PNR_Engine_WORLD_H
 
 #include <vector>
 #include "Room.h"
@@ -16,14 +12,11 @@ namespace BRO{
     public:
         std::vector<BRO::Room> world;
 
-        void initArcadeRoom(int resMultiplier);
-        void initStudioRoom(int resMultiplier);
+        void initArcadeRoom(unsigned int &resMultiplier);
+        void initStudioRoom(unsigned int &resMultiplier);
 
-        void initWorld(int resMultiplier);
+        void initWorld(unsigned int &resMultiplier);
     };
 }
 
-
-
-
-#endif //SFML_WORLD_H
+#endif //PNR_Engine_WORLD_H

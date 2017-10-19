@@ -1,13 +1,9 @@
-//
-// Created by Roman Hock on 19.10.17.
-//
-
 #include "Player.h"
 
 //---------------------------
 // Constructor
 //---------------------------
-BRO::Player::Player(const std::string &filePath, int resMultiplier){
+BRO::Player::Player(const std::string &filePath, unsigned int &resMultiplier){
     mask.left = 0;
     mask.top = 0;
     mask.width = 64;
@@ -23,7 +19,6 @@ BRO::Player::Player(const std::string &filePath, int resMultiplier){
                     0.01f * (sprite.getPosition().y / resMultiplier) * resMultiplier);
 
     // The target, that the player moves towards
-    moveTarget = sf::Vector2f(sprite.getPosition());
 }
 
 //------------------------------------
@@ -47,13 +42,13 @@ void BRO::Player:: iterateSprite(int top, int startLeft, int maxLeft, int increm
 // set Target
 //---------------------------
 void BRO::Player:: setTarget(sf::Vector2f coordinates){
-    moveTarget = sf::Vector2f(coordinates);
+    moveTarget = coordinates;
 }
 
 //----------------------------------------------
 // walk-animations + sprite movement
 //----------------------------------------------
-void BRO::Player:: walk(int resMultiplier, float resMultiplierF){
+void BRO::Player:: walk(unsigned int &resMultiplier, float &resMultiplierF){
     sf::Vector2f direction = sf::Vector2f(moveTarget.x, moveTarget.y) - sprite.getPosition();
     float magnitude = sqrt((direction.x * direction.x) + (direction.y * direction.y));
     sf::Vector2f unitVector((direction.x * 1.3f) / magnitude, direction.y / (magnitude * 1.8f));
@@ -108,7 +103,7 @@ void BRO::Player::idle(){
 //------------------------------------
 // handling all animations
 //------------------------------------
-void BRO::Player:: animate(int resMultiplier, float resMultiplierF){
+void BRO::Player:: animate(unsigned int &resMultiplier, float &resMultiplierF){
     if (round(moveTarget.x) != round(sprite.getPosition().x) && round(moveTarget.y) != round(sprite.getPosition().y)){
         walk(resMultiplier, resMultiplierF);
     } else {

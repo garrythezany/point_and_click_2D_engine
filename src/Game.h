@@ -1,9 +1,5 @@
-//
-// Created by Roman Hock on 19.10.17.
-//
-
-#ifndef SFML_GAME_H
-#define SFML_GAME_H
+#ifndef PNR_Engine_GAME_H
+#define PNR_Engine_GAME_H
 
 #include "Node.h"
 #include "Polygon.h"
@@ -17,13 +13,12 @@
 namespace BRO{
     class Game {
     public:
-        unsigned int resMultiplier = 6;
+        unsigned int resMultiplier = 5;
         float resMultiplierF = resMultiplier;
 
         sf::RenderWindow window;
 
         void setResMultiplier(unsigned int multiplier);
-
 
     };
 
@@ -33,7 +28,6 @@ namespace BRO{
         STATE_OPTIONS,
         STATE_PLAYING
     };
-
 }
 
-#endif //SFML_GAME_H
+#endif //PNR_Engine_GAME_H
