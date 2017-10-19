@@ -17,13 +17,21 @@ set(SOURCE_FILES
         src/Cursor.cpp
         src/Cursor.h
         src/Player.cpp
-        src/Player.h src/Room.cpp src/Room.h src/Item.cpp src/Item.h)
+        src/Player.h
+        src/Room.cpp
+        src/Room.h
+        src/Item.cpp
+        src/Item.h
+        src/World.cpp
+        src/World.h)
 
 configure_file(images/sprite_full.png sprite_full.png COPYONLY)
 configure_file(images/cursor.png cursor.png COPYONLY)
 configure_file(images/shop.png shop.png COPYONLY)
 configure_file(images/bedroom.png bedroom.png COPYONLY)
 configure_file(images/arcade.png arcade.png COPYONLY)
+configure_file(images/studio.png studio.png COPYONLY)
+configure_file(images/studio_old.png studio_old.png COPYONLY)
 
 add_executable(SFML ${SOURCE_FILES} src/Node.cpp src/Node.h)
 

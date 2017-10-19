@@ -12,6 +12,7 @@
 #include "Player.h"
 #include "Room.h"
 #include "Item.h"
+//#include "World.h"
 
 namespace BRO{
     class Game {
@@ -22,6 +23,15 @@ namespace BRO{
         sf::RenderWindow window;
 
         void setResMultiplier(unsigned int multiplier);
+
+
+    };
+
+    enum class GameStates{
+        STATE_START = 1,
+        STATE_MENU,
+        STATE_OPTIONS,
+        STATE_PLAYING
     };
 
 }
