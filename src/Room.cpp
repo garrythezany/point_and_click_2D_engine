@@ -25,10 +25,10 @@ void BRO::Room::setShape(int shapeIndex, sf::ConvexShape &shape){
 
 void BRO::Room::scrollHorizontal(float playerPositionX, unsigned int &resMultiplier){
     if (isScrollable){
-        if (playerPositionX > mask.width + mask.left - 100 * resMultiplier && texture.getSize().x * resMultiplier > mask.width + mask.left){
-            mask.left += 1 * resMultiplier;
+        if (playerPositionX > mask.width + mask.left - 100 * resMultiplier && (texture.getSize().x - 1) * resMultiplier > mask.width + mask.left){
+            mask.left += 1.5f * resMultiplier;
         } else if (playerPositionX < mask.left + 100 * resMultiplier && mask.left > 0){
-            mask.left -= 1 * resMultiplier;
+            mask.left -= 1.5f * resMultiplier;
         }
     }
 }

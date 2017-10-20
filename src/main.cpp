@@ -1,8 +1,4 @@
 #include <iostream>
-#include <cmath>
-#include <SFML/Graphics.hpp>
-#include <SFML/Audio.hpp>
-
 #include "Game.h"
 
 using namespace std;
@@ -10,7 +6,7 @@ using namespace std;
 int main() {
     BRO::Game game;
 
-    sf::Event event;
+    static sf::Event event;
 
     // Set default game resolution
     // 1 = 320x200
