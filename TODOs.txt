@@ -3,6 +3,8 @@ TODO:
 --- PLAYER
 
 - player doesn't walk straight diagonal paths. How could this be fixed?
+- where did player placement on game-start get screwed???? (player walks to the front, without clicking)
+
 
 
 --- ROOMS / WORLD
