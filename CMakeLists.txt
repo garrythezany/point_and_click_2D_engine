@@ -18,7 +18,9 @@ set(SOURCE_FILES
         src/World.cpp
         src/World.h
         src/Pathfinder.cpp
-        src/Pathfinder.h)
+        src/Pathfinder.h
+        src/Music.cpp
+        src/Music.h)
 
 configure_file(images/sprite_full.png sprite_full.png COPYONLY)
 configure_file(images/cursor.png cursor.png COPYONLY)
@@ -26,6 +28,7 @@ configure_file(images/shop.png shop.png COPYONLY)
 configure_file(images/bedroom.png bedroom.png COPYONLY)
 configure_file(images/arcade.png arcade.png COPYONLY)
 configure_file(images/studio.png studio.png COPYONLY)
+configure_file(music/track1.ogg track1.ogg COPYONLY)
 
 add_executable(SFML ${SOURCE_FILES})
 

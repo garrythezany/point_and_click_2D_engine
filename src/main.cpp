@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cmath>
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 #include "Game.h"
 
@@ -41,7 +42,9 @@ int main() {
     BRO::Room currentRoom = studioRoom;
     BRO::Player currentPlayer = player;
 
-    BRO::Item test("cursor.png", 500, 500, game.resMultiplier);
+    BRO::Music track1("track1.ogg");
+    track1.audio.setVolume(40);
+    track1.audio.play();
 
     while(game.window.isOpen()){
         while(game.window.pollEvent(event)) {
@@ -68,9 +71,6 @@ int main() {
 
         game.window.clear(sf::Color::Black);
 
-        //window.draw(bedroom.sprite);
-        //window.draw(shop.sprite);
-        //window.draw(currentRoom.sprite);
         currentRoom.drawRoom(game.window);
 
         game.window.draw(currentPlayer.sprite);

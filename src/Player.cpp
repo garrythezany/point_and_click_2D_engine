@@ -50,7 +50,7 @@ void BRO::Player:: walk(unsigned int &resMultiplier, float &resMultiplierF){
     if (moveClock.getElapsedTime().asMilliseconds() > 10){
         sf::Vector2f direction = sf::Vector2f(moveTarget.x, moveTarget.y) - sprite.getPosition();
         float magnitude = sqrt((direction.x * direction.x) + (direction.y * direction.y));
-        sf::Vector2f unitVector(direction.x / magnitude, direction.y / (magnitude * 1.8f));
+        sf::Vector2f unitVector((direction.x * 1.9f) / magnitude, direction.y / (magnitude * 1.9f));
 
         // player-movement
         sprite.move(unitVector * (sprite.getPosition().y / (resMultiplier * 130)) * resMultiplierF);

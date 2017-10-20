@@ -6,6 +6,7 @@
 #include "Player.h"
 #include "Room.h"
 #include "Item.h"
+#include "Music.h"
 //#include "World.h"
 
 namespace BRO{
