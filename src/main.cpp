@@ -20,7 +20,7 @@ int main() {
     // 9 = 2880x1800
     game.setResMultiplier(6);
 
-    game.window.create(sf::VideoMode(320 * game.resMultiplier, 200 * game.resMultiplier, 32), "PNR Engine", sf::Style::Titlebar | sf::Style::Close);
+    game.window.create(sf::VideoMode(320 * game.resMultiplier, 200 * game.resMultiplier, 32), "PNC Engine", sf::Style::Titlebar | sf::Style::Close);
     game.window.setFramerateLimit(60);
     game.window.setMouseCursorVisible(false);
     //BRO::World world;
