@@ -11,10 +11,10 @@ namespace BRO{
     class Music {
     public:
         sf::Music audio;
-        explicit Music(std::string filePath);
+        explicit Music(const std::string &filePath);
+
+        void loop();
     };
-
 }
-
 
 #endif //PNC_ENGINE_MUSIC_H

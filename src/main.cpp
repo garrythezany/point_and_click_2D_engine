@@ -44,7 +44,6 @@ int main() {
 
     BRO::Music track1("track1.ogg");
     track1.audio.setVolume(40);
-    track1.audio.play();
 
     while(game.window.isOpen()){
         while(game.window.pollEvent(event)) {
@@ -52,6 +51,8 @@ int main() {
                 game.window.close();
             }
         }
+
+        track1.loop();
 
         currentPlayer.animate(game.resMultiplier, game.resMultiplierF);
         cursor.update(game.window.mapPixelToCoords(sf::Mouse::getPosition(game.window)));
