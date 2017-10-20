@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Player.h"
 
 //---------------------------
@@ -48,9 +47,6 @@ void BRO::Player:: setTarget(sf::Vector2f coordinates){
 // walk-animations + sprite movement
 //----------------------------------------------
 void BRO::Player:: walk(unsigned int &resMultiplier, float &resMultiplierF){
-
-    std::cout << moveClock.getElapsedTime().asMilliseconds() << std::endl;
-
     if (moveClock.getElapsedTime().asMilliseconds() > 10){
         sf::Vector2f direction = sf::Vector2f(moveTarget.x, moveTarget.y) - sprite.getPosition();
         float magnitude = sqrt((direction.x * direction.x) + (direction.y * direction.y));
