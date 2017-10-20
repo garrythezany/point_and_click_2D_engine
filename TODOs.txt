@@ -2,9 +2,7 @@ TODO:
 
 --- PLAYER
 
-- Make Player speed independent from frame rate
-- Make Player speed dependent from y-position in window (the "further away" from screen, the slower the movement)
-
+- player doesn't walk straight diagonal paths. How could this be fixed?
 
 
 --- ROOMS / WORLD

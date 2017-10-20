@@ -24,15 +24,11 @@ int main() {
     game.setResMultiplier(6);
 
     game.window.create(sf::VideoMode(320 * game.resMultiplier, 200 * game.resMultiplier, 32), "PNR Engine", sf::Style::Titlebar | sf::Style::Close);
-    game.window.setFramerateLimit(90);
+    game.window.setFramerateLimit(60);
     game.window.setMouseCursorVisible(false);
     //BRO::World world;
     //world.initStudioRoom(game.resMultiplier);
     BRO::Room studioRoom("studio.png", game.resMultiplier);
-
-    // Frame Clock
-    sf::Clock clock;
-    sf::Clock moveClock;
 
     BRO::Cursor cursor;
     cursor.setScale(game.resMultiplier);

@@ -3,6 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <cmath>
+#include "Game.h"
 
 namespace BRO{
     class Player {
@@ -15,6 +16,10 @@ namespace BRO{
         sf::Sprite sprite;
         sf::Clock clock;
         sf::Vector2f moveTarget;
+        sf::Clock moveClock;
+
+        float positiveDirectionX;
+        float positiveDirectionY;
 
         // Constructor
         Player(const std::string &filePath, unsigned int &resMultiplier);

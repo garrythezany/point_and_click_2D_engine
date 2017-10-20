@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Player.h"
 
 //---------------------------
@@ -17,8 +18,6 @@ BRO::Player::Player(const std::string &filePath, unsigned int &resMultiplier){
     // where y = 100 * game.resMultiplier results in a scale of 1 * game.resMultiplier
     sprite.setScale(0.01f * (sprite.getPosition().y / resMultiplier) * resMultiplier,
                     0.01f * (sprite.getPosition().y / resMultiplier) * resMultiplier);
-
-    // The target, that the player moves towards
 }
 
 //------------------------------------
@@ -49,47 +48,50 @@ void BRO::Player:: setTarget(sf::Vector2f coordinates){
 // walk-animations + sprite movement
 //----------------------------------------------
 void BRO::Player:: walk(unsigned int &resMultiplier, float &resMultiplierF){
-    sf::Vector2f direction = sf::Vector2f(moveTarget.x, moveTarget.y) - sprite.getPosition();
-    float magnitude = sqrt((direction.x * direction.x) + (direction.y * direction.y));
-    sf::Vector2f unitVector((direction.x * 1.3f) / magnitude, direction.y / (magnitude * 1.8f));
 
-    // overall player-speed
-    sprite.move(unitVector * 0.8f * resMultiplierF);
+    std::cout << moveClock.getElapsedTime().asMilliseconds() << std::endl;
 
-    // scale player based on y-axis
-    sprite.setScale((0.01f * (sprite.getPosition().y / resMultiplier) * 0.999f) * resMultiplier,
-                    (0.01f * (sprite.getPosition().y / resMultiplier) * 0.999f) * resMultiplier);
+    if (moveClock.getElapsedTime().asMilliseconds() > 10){
+        sf::Vector2f direction = sf::Vector2f(moveTarget.x, moveTarget.y) - sprite.getPosition();
+        float magnitude = sqrt((direction.x * direction.x) + (direction.y * direction.y));
+        sf::Vector2f unitVector(direction.x / magnitude, direction.y / (magnitude * 1.8f));
 
-    // direction stuff
-    float positiveDirectionX;
-    float positiveDirectionY;
+        // player-movement
+        sprite.move(unitVector * (sprite.getPosition().y / (resMultiplier * 130)) * resMultiplierF);
 
-    if (direction.x < 0){
-        positiveDirectionX = - direction.x;
-    } else {
-        positiveDirectionX = direction.x;
-    }
-    if (direction.y < 0){
-        positiveDirectionY = - direction.y;
-    } else {
-        positiveDirectionY = direction.y;
-    }
+        // scale player based on y-axis
+        sprite.setScale((0.01f * (sprite.getPosition().y / resMultiplier) * 0.999f) * resMultiplier,
+                        (0.01f * (sprite.getPosition().y / resMultiplier) * 0.999f) * resMultiplier);
 
-    // walk left
-    if (direction.x < 0 && positiveDirectionX > positiveDirectionY){
-        iterateSprite(80, 0, 192, 64, .08f);
-    }
-        // walk right
-    else if (direction.x > 0 && positiveDirectionX > positiveDirectionY){
-        iterateSprite(160, 0, 192, 64, .08f);
-    }
-        // walk front
-    else if (positiveDirectionX < positiveDirectionY && direction.y > 0){
-        iterateSprite(240, 0, 320, 64, .08f);
-    }
-        // walk back
-    else if (positiveDirectionX < positiveDirectionY && direction.y < 0){
-        iterateSprite(320, 0, 320, 64, .08f);
+        // direction stuff
+        if (direction.x < 0){
+            positiveDirectionX = - direction.x;
+        } else {
+            positiveDirectionX = direction.x;
+        }
+        if (direction.y < 0){
+            positiveDirectionY = - direction.y;
+        } else {
+            positiveDirectionY = direction.y;
+        }
+
+        // walk left
+        if (direction.x < 0 && positiveDirectionX > positiveDirectionY){
+            iterateSprite(80, 0, 192, 64, .08f);
+        }
+            // walk right
+        else if (direction.x > 0 && positiveDirectionX > positiveDirectionY){
+            iterateSprite(160, 0, 192, 64, .08f);
+        }
+            // walk front
+        else if (positiveDirectionX < positiveDirectionY && direction.y > 0){
+            iterateSprite(240, 0, 320, 64, .08f);
+        }
+            // walk back
+        else if (positiveDirectionX < positiveDirectionY && direction.y < 0){
+            iterateSprite(320, 0, 320, 64, .08f);
+        }
+        moveClock.restart();
     }
 }
 
