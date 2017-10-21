@@ -17,10 +17,6 @@ TODO:
 
 --- PATH FINDING
 
--- General
-- build function to check whether two line segments intersect
-- build function to check whether a point lies inside a polygon
-
 -- Algorithms
 - Implement A-star or Dijkstra's algorithm for the node-graph of the NavMesh. This will preselect the polygons to perform the next algorithm
 - Get list of portals between the polygons, that A-star or Dijkstra outputs

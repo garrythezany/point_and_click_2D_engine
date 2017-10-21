@@ -3,7 +3,6 @@
 
 #include <SFML/Graphics.hpp>
 #include <cmath>
-#include "Game.h"
 
 namespace BRO{
     class Player {

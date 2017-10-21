@@ -2,7 +2,6 @@
 #define PNR_Engine_ROOM_H
 
 #include <SFML/Graphics.hpp>
-#include "Game.h"
 #include "Pathfinder.h"
 
 namespace BRO{

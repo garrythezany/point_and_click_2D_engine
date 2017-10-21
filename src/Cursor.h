@@ -2,7 +2,6 @@
 #define PNR_Engine_CURSOR_H
 
 #include <SFML/Graphics.hpp>
-#include "Game.h"
 
 namespace BRO{
     class Cursor {

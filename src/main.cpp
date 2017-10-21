@@ -41,6 +41,10 @@ int main() {
     BRO::Music track1("track1.ogg");
     track1.audio.setVolume(40);
 
+    BRO::Pathfinder pathfinder;
+
+    #include "../rooms/studio.h"
+
     while(game.window.isOpen()){
         while(game.window.pollEvent(event)) {
             if(event.type == sf::Event::Closed){
@@ -60,6 +64,7 @@ int main() {
             sf::Mouse::getPosition(game.window).y >= 0);
 
         if(clickedInWindow){
+            pathfinder.validPolygon(navMesh, player, cursor);
             currentPlayer.setTarget(game.window.mapPixelToCoords(sf::Mouse::getPosition(game.window)));
         }
 
@@ -69,6 +74,22 @@ int main() {
         game.window.clear(sf::Color::Black);
 
         currentRoom.drawRoom(game.window);
+
+        game.window.draw(poly1);
+        game.window.draw(poly2);
+        game.window.draw(poly3);
+        game.window.draw(poly4);
+        game.window.draw(poly5);
+        game.window.draw(poly6);
+        game.window.draw(poly7);
+        game.window.draw(poly8);
+        game.window.draw(poly9);
+        game.window.draw(poly10);
+        game.window.draw(poly11);
+        game.window.draw(poly12);
+        game.window.draw(poly13);
+        game.window.draw(poly14);
+        game.window.draw(poly15);
 
         game.window.draw(currentPlayer.sprite);
         game.window.draw(cursor.sprite);
